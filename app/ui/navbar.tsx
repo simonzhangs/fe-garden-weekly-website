@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 const defaultNavBar = [
-  { name: "全部", path: "" },
-  { name: "最新周刊", path: "" },
+  { name: "全部", path: "/" },
+  { name: "最新周刊", path: "/weekly" },
 ];
 
 interface INavBarItem {  
