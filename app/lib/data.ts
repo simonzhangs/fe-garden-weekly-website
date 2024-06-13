@@ -19,6 +19,22 @@ export async function fetchWeeklyByLink(link: string) {
   return rows[0].content;
 };
 
+export async function fetchLatestWeekly() {
+  const client = await db.connect();
+  try {
+    const { rows } = await client.sql`
+      SELECT content
+      FROM weekly_magazines
+      ORDER BY publish_date DESC
+      LIMIT 1
+    `;
+    // console.log('fetchLatestWeekly', rows[0].content);
+    return rows[0]?.content;
+  } finally {
+    client.release();
+  }
+}
+
 export async function fetchWeeklyLists() {
   try {
     const data = await db`
