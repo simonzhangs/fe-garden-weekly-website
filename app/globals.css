@@ -8,6 +8,130 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+@layer base {
+  :root {
+    --color-fill: #83bdf3; /* 深色背景色 */
+    --color-screen-fill: #fafbff; /* 全局浅背景色 */
+    --color-content-fill: #f0f3fa; /* 内容区域背景色 */
+    --shadow-color-content-fill: #c0c4cc; /* 内容区域阴影颜色 */
+    --text-color-dark-bg: #ffffff; /* 深色背景下的文字颜色 */
+    --link-color: #007bff; /* 链接颜色 */
+    --link-hover-color: #0056b3; /* 链接悬停颜色 */
+  }
+
+  body {
+    /* background-color: var(--color-screen-fill);
+    color: var(--font-color);
+    font-family: Arial, sans-serif; */
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    /* color: var(--color-fill); */
+    text-align: left;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  h1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0.25rem;
+    background-color: var(--color-fill);
+  }
+
+  p {
+    margin-top: 0.5rem;
+    color: var(--p-color);
+  }
+
+  a {
+    display: inline-block;
+    color: var(--link-color);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.1rem;
+    width: 100%;
+    height: 0.15rem;
+    background-color: var(--link-hover-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  a:hover {
+    color: var(--link-hover-color);
+  }
+
+  a:hover::after {
+    transform: scaleX(1);
+  }
+
+  img {
+    display: block;
+    margin: 1rem auto;
+    width: 80%;
+    height: auto; /* 保持图片比例 */
+    max-height: 80%; /* 确保图片不会超出容器 */
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px var(--shadow-color-content-fill, rgba(0, 0, 0, 0.1)),
+      0 6px 20px var(--shadow-color-content-fill, rgba(0, 0, 0, 0.1));
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  img:hover {
+    box-shadow: 0 8px 16px var(--shadow-color-content-fill, rgba(0, 0, 0, 0.2)),
+      0 12px 40px var(--shadow-color-content-fill, rgba(0, 0, 0, 0.2));
+    transform: translateY(-0.25rem);
+  }
+
+  hr {
+    margin: 1rem 0;
+  }
+
+  /* 主题色，在换肤节点增加此类名，同时配合tailwindcss.config.ts  theme.extend 配置使用变量声明UI样式，并在需要应用样式节点使用自定义样式*/
+  .theme-pink {
+    --color-fill: #ff69b4;
+    --color-screen-fill: #fdf2f8;
+    --color-content-fill: #fce6f2;
+    --shadow-color-content-fill: #c0c4cc; /* 内容区域阴影颜色 */
+    --text-color-dark-bg: #000000; /* 深色背景下的文字颜色 */
+    --link-color: #ff1493; /* 链接颜色 */
+    --link-hover-color: #c71585; /* 链接悬停颜色 */
+  }
+
+  .theme-green {
+    --color-fill: #33b86c;
+    --color-screen-fill: #f3faf7;
+    --color-content-fill: #e6f5e9;
+    --shadow-color-content-fill: #c0c4cc; /* 内容区域阴影颜色 */
+    --text-color-dark-bg: #000000; /* 深色背景下的文字颜色 */
+    --link-color: #2e8b57; /* 链接颜色 */
+    --link-hover-color: #206040; /* 链接悬停颜色 */
+  }
+  .theme-yellow {
+    --color-fill: #ff8c00;
+    --color-screen-fill: #fff6f2;
+    --color-content-fill: #ffeee5;
+    --shadow-color-content-fill: #c0c4cc;
+    --text-color-dark-bg: #000000;
+    --link-color: #ff6300;
+    --link-hover-color: #cc5000;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
