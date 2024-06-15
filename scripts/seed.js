@@ -52,10 +52,22 @@ async function seedUsers(client) {
   }
 }
 
+async function deleteArticleById(client, id) {
+  try {
+    const  { rows } = await client.sql`DELETE from weekly_magazines WHERE id=${id}`;
+    console.log('deleteArticleById',rows[0])
+  } catch (error) {
+    console.error('Error deleteArticleById:', error);
+    throw error;
+  }
+}
+
 async function main() {
   const client = await db.connect();
 
-  await seedUsers(client);
+  // await seedUsers(client);
+
+  await deleteArticleById(client, 15);
 
   await client.end();
 }
