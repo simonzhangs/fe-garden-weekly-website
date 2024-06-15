@@ -19,6 +19,14 @@ export async function fetchWeeklyByLink(link: string) {
   return rows[0].content;
 };
 
+export async function  fetchWeeklyAllArticles() {
+  const client = await db.connect();
+  const { rows } = await client.sql`SELECT link from weekly_magazines ORDER BY publish_date`;
+  const links = rows.map(row => row.link);  
+  // console.log('fetchWeeklyAllArticles',links)
+  return links;  
+}
+
 export async function fetchLatestWeekly() {
   const client = await db.connect();
   try {
@@ -37,10 +45,13 @@ export async function fetchLatestWeekly() {
 
 export async function fetchWeeklyLists() {
   try {
-    const data = await db`
+    const client = await db.connect();
+    const data = await client.sql`
         SELECT *
-        FROM weekly_magazines`;
-    console.log("fetchWeeklyLists", data.rows);
+        FROM weekly_magazines
+        ORDER BY publish_date DESC
+        `;
+    // console.log("fetchWeeklyLists", data.rows);
     return data.rows;
   } catch (error) {
     console.error("fetchWeeklyLists Error:", error);
