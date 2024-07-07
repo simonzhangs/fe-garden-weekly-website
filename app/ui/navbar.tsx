@@ -1,27 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { ColorCircles } from './colorCircles'
+import { ColorCircles } from "./colorCircles";
 
 const defaultNavBar = [
   { name: "全部", path: "/" },
   { name: "最新周刊", path: "/weekly" },
 ];
 
-interface INavBarItem {  
-  path: string;  
-  name: string;  
+interface INavBarItem {
+  path: string;
+  name: string;
 }
 
-// NavBar 组件的属性接口  
-interface INavBarProps {    
+// NavBar 组件的属性接口
+interface INavBarProps {
   theme?: string;
   logoName?: string;
   navBar?: INavBarItem[];
-} 
+}
 
-export function NavBar({ logoName = '前端后花园周刊', navBar = defaultNavBar }: INavBarProps) {
-
+export function NavBar({
+  logoName = "前端后花园周刊",
+  navBar = defaultNavBar,
+}: INavBarProps) {
   return (
     // 导航栏
     <div className="">

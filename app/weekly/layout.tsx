@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import NavLink from "../ui/nav-link";
+import CustomQrcode from "../ui/custom-qrcode";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,11 @@ export default async function PageRootLayout({
         <NavLink />
       </nav>
       <section className="rounded bg-skin-content-fill">{children}</section>
+      <section>
+        <CustomQrcode 
+          contents="http://weixin.qq.com/r/nT8gON7EG4NkrZpb92qP"
+        />
+      </section>
     </div>
   );
 }

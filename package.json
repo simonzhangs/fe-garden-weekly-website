@@ -11,6 +11,7 @@
     "insert": "node -r dotenv/config ./scripts/genArticle.js"
   },
   "dependencies": {
+    "@bitjson/qr-code": "^1.0.2",
     "@vercel/postgres": "^0.8.0",
     "clsx": "^2.1.1",
     "next": "14.2.3",
